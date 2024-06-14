@@ -23,7 +23,7 @@ conda activate mlenv
 pip install -r requirements.txt
 ```
 
-### STEP 03 - Execute data ingestion, transformation and training
+### STEP 03 - Execute data ingestion, transformation and training procedures
 
 ```bash
 # Run the following command
