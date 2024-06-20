@@ -10,6 +10,8 @@ from dataclasses import dataclass
 
 @dataclass
 class DataIngestionConfig:
+    dataset_path: str=os.path.join('data', "F1_race.csv")
+    processed_data_path: str=os.path.join('data', "processed_F1_race.csv")
     train_data_path: str=os.path.join('output',"train.csv")
     test_data_path: str=os.path.join('output',"test.csv")
     raw_data_path: str=os.path.join('output',"data.csv")
@@ -19,7 +21,7 @@ class DataIngestion:
         self.ingestion_config=DataIngestionConfig()
 
     def initiate_data_ingestion(self):
-        logger.info("Entered the data ingestion method or component")
+        logger.info("Initiate data ingestion method or component")
         try:
             # 1st Dataset "constructors_mod"
             df_constructor = pd.read_csv('./notebook/raw_data/constructors.csv')
@@ -93,6 +95,24 @@ class DataIngestion:
             # rename the columns accordingly
             df_race_finished.rename(columns={'name_x': 'location', 'name_y': 'constructorname'}, inplace=True)
 
+            os.makedirs(os.path.dirname(self.ingestion_config.dataset_path),exist_ok=True)
+
+            df_race_finished.to_csv(self.ingestion_config.dataset_path,index=False,header=True)
+
+            return(
+                self.ingestion_config.dataset_path
+            )
+        
+        except Exception as e:
+            raise CustomException(e,sys)   
+
+
+    def data_preprocessing_feature_engineering(self):
+        logger.info("Data preprocessing and feature engineering") 
+
+        try:
+            df_race_finished = pd.read_csv('./data/F1_race.csv')
+
             # Applying Mathematical substrations between features 'year' and 'yob' to derive the race_age of the driver
 
             df_race_finished['race_age'] = df_race_finished['year'] - df_race_finished['yob']
@@ -112,10 +132,23 @@ class DataIngestion:
             df_race_finished['rank'] = df_race_finished['rank'].astype("Int64")
             df_race_finished['fastestLapSpeed'] = df_race_finished['fastestLapSpeed'].astype(float)
 
-            os.makedirs("./data", exist_ok=True)
-            df_race_finished.to_csv("./data/F1_race.csv", index=False)
+            os.makedirs(os.path.dirname(self.ingestion_config.processed_data_path),exist_ok=True)
 
-            df=pd.read_csv('./data/F1_race.csv')
+            df_race_finished.to_csv(self.ingestion_config.processed_data_path,index=False,header=True)
+
+            return(
+                self.ingestion_config.processed_data_path
+            )
+
+        except Exception as e:
+            raise CustomException(e,sys)      
+
+    def complete_data_ingestion(self):
+        logger.info("Resume data ingestion method or component") 
+
+        try:
+
+            df=pd.read_csv('./data/processed_F1_race.csv')
             logger.info('Read the dataset as dataframe')
 
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path),exist_ok=True)
