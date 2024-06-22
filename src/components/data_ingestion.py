@@ -118,7 +118,7 @@ class DataIngestion:
             df_race_finished['race_age'] = df_race_finished['year'] - df_race_finished['yob']
             df_race_finished.drop(columns = ['yob'], axis=1, inplace=True)
 
-            df_race_finished = df_race_finished.drop(columns = ['fp1_date', 'fp1_time', 'fp2_date', 'fp2_time', 'fp3_date', 'fp3_time', \
+            df_race_finished = df_race_finished.drop(columns = ['year', 'fp1_date', 'fp1_time', 'fp2_date', 'fp2_time', 'fp3_date', 'fp3_time', \
                                                     'quali_date', 'quali_time', 'sprint_date', 'sprint_time'])
             
             # replace the '\N' values with NaN values

@@ -30,7 +30,6 @@ def predict_datapoint():
             rank=int(request.form.get('rank')),
             fastestLapSpeed=float(request.form.get('fastestLapSpeed')),
             drivername=request.form.get('drivername'),
-            year=int(request.form.get('year')),
             round=int(request.form.get('round')),
             location=request.form.get('location'),
             constructorname=request.form.get('constructorname'),

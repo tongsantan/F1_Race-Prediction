@@ -29,7 +29,7 @@ class DataTransformation:
         
         '''
         try:
-            numerical_columns = ['grid', 'position', 'laps', 'fastestLap', 'rank', 'fastestLapSpeed', 'year', 'round', 'race_age']
+            numerical_columns = ['grid', 'position', 'laps', 'fastestLap', 'rank', 'fastestLapSpeed', 'round', 'race_age']
             
             categorical_columns = ['drivername', 'location', 'constructorname', 'status']
 

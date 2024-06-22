@@ -34,7 +34,6 @@ class CustomData:
         rank: float,
         fastestLapSpeed: float,
         drivername, 
-        year: int,
         round: int,
         location,
         constructorname,
@@ -54,8 +53,6 @@ class CustomData:
         self.fastestLapSpeed = fastestLapSpeed
 
         self.drivername = drivername
-
-        self.year = year
 
         self.round = round
 
@@ -77,7 +74,6 @@ class CustomData:
                 "rank": [self.rank],
                 "fastestLapSpeed": [self.fastestLapSpeed],
                 "drivername": [self.drivername],
-                "year": [self.year],
                 "round": [self.round],
                 "location": [self.location],
                 "constructorname": [self.constructorname],
