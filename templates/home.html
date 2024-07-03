@@ -1,10 +1,15 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Race (Regression Problem)</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>  
 <body>
     <div class="login">
-       <h1>F1 Race (Regression Problem)</h1>
+       <h1>F1 Race Performance Prediction</h1>
        <form action="{{ url_for('predict_datapoint')}}" method="post">
-        <h1>
-            <legend>F1 Race Performance Prediction</legend>
         </h1>
         <div class="mb-3">
             <label class="form-label">Grid</label>
@@ -129,5 +134,5 @@
     <h2>
        THE  prediction is {{results}}
     </h2>
-   <body>
+</body>
 </html>
