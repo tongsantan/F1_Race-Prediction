@@ -1,6 +1,7 @@
 import os
 import sys
 from ensure import ensure_annotations
+from box.exceptions import BoxValueError
 from box import ConfigBox
 import numpy as np 
 import pandas as pd
@@ -12,6 +13,7 @@ import yaml
 from src import logger
 from src.exception import CustomException
 from pathlib import Path
+
 
 @ensure_annotations
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
