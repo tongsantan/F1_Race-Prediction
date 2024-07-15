@@ -17,6 +17,7 @@ class DataIngestion:
         logger.info("Data preprocessing and feature engineering") 
         
         try:
+            logger.info('Read the dataset as dataframe')
             # 1st Dataset "constructors_mod"
             df_constructor = pd.read_csv(self.config.constructors_data_path)
             # Drop the columns 'url', 'constructorRef', 'nationality' which are not useful
