@@ -32,8 +32,7 @@ class ConfigurationManager:
             status_data_path=config.status_data_path,
             processed_data_path=config.processed_data_path,
             train_data_path=config.train_data_path,
-            test_data_path=config.test_data_path,
-            raw_data_path=config.raw_data_path 
+            test_data_path=config.test_data_path
         )
 
         return data_ingestion_config

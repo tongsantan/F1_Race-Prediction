@@ -86,15 +86,15 @@ class DataIngestion:
     def complete_data_ingestion(self):
         logger.info("Resume data ingestion method or component")
         try:
-            df=pd.read_csv(self.config.processed_data_path)
             logger.info('Read the dataset as dataframe')
+            
+            df=pd.read_csv(self.config.processed_data_path)
+            
+            logger.info("Train test split initiated")
+
+            train_set,test_set=train_test_split(df,test_size=0.3,random_state=42)
 
             os.makedirs(os.path.dirname(self.config.train_data_path),exist_ok=True)
-
-            df.to_csv(self.config.raw_data_path,index=False,header=True)
-
-            logger.info("Train test split initiated")
-            train_set,test_set=train_test_split(df,test_size=0.3,random_state=42)
 
             train_set.to_csv(self.config.train_data_path,index=False,header=True)
 
